@@ -1,6 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import Papa from "papaparse";
 import { ColumnDef } from "@tanstack/react-table";
 
 export function cn(...inputs: ClassValue[]) {
@@ -18,6 +17,7 @@ export interface DataTableProps<TData, TValue> {
 }
 
 export type JobType = {
+  id: string;
   jobTitle: string;
   companyName: string;
   location: string;
@@ -25,29 +25,7 @@ export type JobType = {
   requirements: string;
 };
 
-export async function fetchCsvData(url: string): Promise<JobType[]> {
-  const response = await fetch(url);
-  const csvText = await response.text();
-  return new Promise((resolve, reject) => {
-    interface CsvParseResult<T> {
-      data: T[];
-    }
 
-    interface CsvParseError {
-      message: string;
-    }
-
-    Papa.parse(csvText, {
-      header: true,
-      complete: (results: CsvParseResult<JobType>) => {
-        resolve(results.data);
-      },
-      error: (error: CsvParseError) => {
-        reject(error);
-      },
-    });
-  });
-}
 
 export function moveColumnsDown(
   columnObj: Column[],

@@ -1,52 +1,24 @@
-"use client"; // NOTE: If this was a real API call this would be a server component
+"use client";
 
-import { useEffect, useState } from "react";
 import { DataTableSkeleton } from "@/components/DataTableSkeleton";
 import { Button } from "@/components/ui/button";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
-import { fetchCsvData, JobType } from "@/lib/utils";
+import { useData } from "@/context/DataContext";
 
-// async function deleteData(id: string): Promise<AapleDataType[]> {
+// async function deleteData(id: string): Promise<JobType[]> {
 //   // Delete from api.
-//   const index = aaplData.findIndex((value) => value.id === id)
-//   aaplData.splice(index, 1)
-//   return aaplData // Simply returning fake data
+//   const index = data.findIndex((value) => value.id === id)
+//   data.splice(index, 1)
+//   return data // Simply returning fake data
 // }
 
 export default function Home() {
-  const [data, setData] = useState<JobType[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const result = await fetchCsvData("/jobs.csv");
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
+  const { data, loading, refetch, setData } = useData();
 
   const clearData = () => {
     setData([]);
-  };
-
-  const refetchData = async () => {
-    setLoading(true);
-    try {
-      const result = await fetchCsvData("/jobs.csv");
-      setData(result);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
   };
 
   if (loading) {
@@ -62,7 +34,7 @@ export default function Home() {
   //  async function deleteRow(id:string) {
   //   console.log("delete this row")
   //     try {
-  //       const result: AapleDataType[] = await deleteData(id);
+  //       const result: JobType[] = await deleteData(id);
   //       setData(result);
   //     } catch (error) {
   //       // Handle error
@@ -79,7 +51,7 @@ export default function Home() {
         <DataTable columns={columns} data={data} />
         <div className='flex justify-center space-x-4'>
           <Button onClick={clearData}>Clear Data</Button>
-          <Button onClick={refetchData}>Refetch Data</Button>
+          <Button onClick={refetch}>Refetch Data</Button>
         </div>
       </div>
     </div>

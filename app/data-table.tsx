@@ -33,8 +33,13 @@ import {
 } from "@/components/ui/table";
 import { DataTableProps } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 
-export function DataTable<TData, TValue>({
+interface DataWithId {
+  id: string;
+}
+
+export function DataTable<TData extends DataWithId, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -44,6 +49,7 @@ export function DataTable<TData, TValue>({
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>([]);
+  const router = useRouter();
 
   const table = useReactTable({
     data,
@@ -90,8 +96,19 @@ export function DataTable<TData, TValue>({
     },
   });
 
-  //Used to show reset button
+  // Used to show reset button
   const isFiltered = table.getState().columnFilters.length > 0;
+
+  // Navigate to the row details page
+  interface Row<TData> {
+    original: TData;
+  }
+
+  const onRowClick =
+    <TData extends DataWithId>(row: Row<TData>) =>
+    () => {
+      router.push(`/details/${row.original.id}`);
+    };
 
   return (
     <div>
@@ -213,6 +230,7 @@ export function DataTable<TData, TValue>({
                   className=''
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  onClick={onRowClick(row)}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
