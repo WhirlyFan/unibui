@@ -41,7 +41,7 @@ export const columns: ColumnDef<JobType>[] = [
   // },
   {
     id: "jobTitle",
-    accessorKey: "Job Title",
+    accessorKey: "jobTitle",
     header: ({ column }) => {
       return (
         <div className='flex justify-between py-2 text-left'>
@@ -78,7 +78,7 @@ export const columns: ColumnDef<JobType>[] = [
   },
   {
     id: "companyName",
-    accessorKey: "Company Name",
+    accessorKey: "companyName",
     header: ({ column }) => {
       return (
         <div className='flex justify-between py-2 text-left'>
@@ -115,7 +115,7 @@ export const columns: ColumnDef<JobType>[] = [
   },
   {
     id: "location",
-    accessorKey: "Location",
+    accessorKey: "location",
     header: ({ column }) => {
       return (
         <div className='flex justify-between py-2 text-left'>
@@ -152,7 +152,7 @@ export const columns: ColumnDef<JobType>[] = [
   },
   {
     id: "jobDescription",
-    accessorKey: "Job Description",
+    accessorKey: "jobDescription",
     header: ({ column }) => {
       return (
         <div className='flex justify-between py-2 text-left'>
@@ -189,7 +189,7 @@ export const columns: ColumnDef<JobType>[] = [
   },
   {
     id: "requirements",
-    accessorKey: "Requirements",
+    accessorKey: "requirements",
     header: ({ column }) => {
       return (
         <div className='flex justify-between py-2 text-left'>
@@ -226,7 +226,7 @@ export const columns: ColumnDef<JobType>[] = [
   },
   {
     id: "actions",
-    header: "Actions",
+    header: "actions",
     cell: ({ row }) => {
       const incomeStatement = row.original;
       return (

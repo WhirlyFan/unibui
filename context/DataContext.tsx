@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { JobType } from "@/lib/utils";
+import { camelCase } from "lodash";
 import Papa from "papaparse";
 
 interface DataContextType {
@@ -34,14 +35,14 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
       const { data: parsedData } = Papa.parse<JobType>(csv, {
         header: true,
         skipEmptyLines: true,
-        transformHeader: (header) => header.trim(),
-        transform: (value) => value.trim(),
+        transformHeader: (header) => camelCase(header.trim()),
       });
       const dataWithIds = parsedData.map((item, index) => ({
         ...item,
         id: index.toString(),
       }));
       setData(dataWithIds);
+      console.log(dataWithIds);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

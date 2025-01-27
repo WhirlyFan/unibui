@@ -25,8 +25,6 @@ export type JobType = {
   requirements: string;
 };
 
-
-
 export function moveColumnsDown(
   columnObj: Column[],
   columnId: string
