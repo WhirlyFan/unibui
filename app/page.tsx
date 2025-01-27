@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import { useData } from "@/context/DataContext";
+import { ModeToggle } from "@/components/mode-toggle";
 
 // async function deleteData(id: string): Promise<JobType[]> {
 //   // Delete from api.
@@ -52,6 +53,7 @@ export default function Home() {
         <div className='flex justify-center space-x-4'>
           <Button onClick={clearData}>Clear Data</Button>
           <Button onClick={refetch}>Refetch Data</Button>
+          <ModeToggle />
         </div>
       </div>
     </div>
