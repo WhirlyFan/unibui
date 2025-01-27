@@ -107,7 +107,7 @@ export function DataTable<TData extends DataWithId, TValue>({
   const onRowClick =
     <TData extends DataWithId>(row: Row<TData>) =>
     () => {
-      router.push(`/details/${row.original.id}`);
+      router.push(`/jobs/${row.original.id}`);
     };
 
   return (
