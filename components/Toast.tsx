@@ -4,8 +4,8 @@ import { useToast } from "@/hooks/use-toast";
 export interface ToastInterface extends ToastProps {
   buttonText: string;
   description: string;
-  title: string;
-  action: ToastActionElement;
+  title?: string;
+  action?: ToastActionElement;
 }
 
 export function Toast({

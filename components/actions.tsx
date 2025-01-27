@@ -63,7 +63,6 @@ export default function Actions({ row }: { row: RowType }) {
           </DropdownMenuItem>
         ) : (
           <DropdownMenuItem onClick={handleDeleteJob}>
-            {" "}
             <Toast
               title={"Job Removed Successfully!"}
               buttonText={"Remove"}
