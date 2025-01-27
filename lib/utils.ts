@@ -25,6 +25,37 @@ export type JobType = {
   requirements: string;
 };
 
+export const addJob = (job: JobType): JobType[] => {
+  const storedJobs = localStorage.getItem("jobs");
+  const jobs: JobType[] = storedJobs ? JSON.parse(storedJobs) : [];
+  // Check if job already exists
+  if (jobs.some((j) => j.id === job.id)) {
+    return jobs;
+  }
+  const updatedData = [...jobs, job];
+  localStorage.setItem("jobs", JSON.stringify(updatedData));
+  return updatedData;
+};
+
+export const deleteJob = (id: string): JobType[] => {
+  const storedJobs = localStorage.getItem("jobs");
+  const jobs: JobType[] = storedJobs ? JSON.parse(storedJobs) : [];
+  const updatedData = jobs.filter((job) => job.id !== id);
+  localStorage.setItem("jobs", JSON.stringify(updatedData));
+  return updatedData;
+};
+
+export const jobExists = (id: string): boolean => {
+  const storedJobs = localStorage.getItem("jobs");
+  const jobs: JobType[] = storedJobs ? JSON.parse(storedJobs) : [];
+  return jobs.some((job) => job.id === id);
+};
+
+export const getSavedJobs = (): JobType[] => {
+  const storedJobs = localStorage.getItem("jobs");
+  return storedJobs ? JSON.parse(storedJobs) : [];
+};
+
 export function moveColumnsDown(
   columnObj: Column[],
   columnId: string
@@ -39,7 +70,6 @@ export function moveColumnsDown(
   const temp = array[index];
   array[index] = array[index + 1];
   array[index + 1] = temp;
-  console.log(array);
   return array;
 }
 

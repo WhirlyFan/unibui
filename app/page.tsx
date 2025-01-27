@@ -6,6 +6,8 @@ import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import { useData } from "@/context/DataContext";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Toaster } from "@/components/ui/toaster";
+import { useRouter } from "next/navigation";
 
 // async function deleteData(id: string): Promise<JobType[]> {
 //   // Delete from api.
@@ -15,8 +17,8 @@ import { ModeToggle } from "@/components/mode-toggle";
 // }
 
 export default function Home() {
-
   const { data, loading, refetch, setData } = useData();
+  const router = useRouter();
 
   const clearData = () => {
     setData([]);
@@ -43,6 +45,10 @@ export default function Home() {
   //     }
   //   }
 
+  const handleJobsRoute = () => {
+    router.push(`/jobs`);
+  };
+
   return (
     <div className='container mx-auto'>
       <div className='text-center text-3xl font-bold pt-4 my-10'>
@@ -53,9 +59,11 @@ export default function Home() {
         <div className='flex justify-center space-x-4'>
           <Button onClick={clearData}>Clear Data</Button>
           <Button onClick={refetch}>Refetch Data</Button>
+          <Button onClick={handleJobsRoute}>Saved Jobs</Button>
           <ModeToggle />
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }

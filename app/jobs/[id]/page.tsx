@@ -13,12 +13,11 @@ export default function JobsDetails() {
   }
   // Job Title,Company Name,Location,Job Description,Requirements
   return (
-    <div>
-      <h1>{details.jobTitle}</h1>
-      <h2>{details.companyName}</h2>
-      <h3>{details.location}</h3>
-      <p>{details.jobDescription}</p>
-      <p>{details.requirements}</p>
+    <div className='container mx-auto'>
+      <div className='text-center text-3xl font-bold pt-4 my-10'>
+        Job Details
+      </div>
+      <div className='container mx-auto rounded-md '>Placeholder</div>
     </div>
   );
 }

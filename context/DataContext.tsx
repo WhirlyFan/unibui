@@ -42,7 +42,6 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
         id: index.toString(),
       }));
       setData(dataWithIds);
-      console.log(dataWithIds);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

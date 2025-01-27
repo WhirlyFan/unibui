@@ -13,7 +13,7 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import { DataTablePagination } from "@/components/reusable/pagination-controls";
+import { DataTablePagination } from "@/components/pagination-controls";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -227,7 +227,7 @@ export function DataTable<TData extends DataWithId, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
-                  className=''
+                  className='cursor-pointer'
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                   onClick={onRowClick(row)}

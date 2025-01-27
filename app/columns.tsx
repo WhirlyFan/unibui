@@ -4,19 +4,10 @@ import {
   HiOutlineArrowLeftCircle,
   HiOutlineArrowRightCircle,
 } from "react-icons/hi2";
-import { RiMore2Fill } from "react-icons/ri";
-import { Toast } from "@/components/reusable/Toast";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import { JobType, moveColumnsDown, moveColumnsUp } from "@/lib/utils";
 
+import Actions from "@/components/actions";
 
 // Job Title,Company Name,Location,Job Description,Requirements
 export const columns: ColumnDef<JobType>[] = [
@@ -40,7 +31,6 @@ export const columns: ColumnDef<JobType>[] = [
   //   enableHiding: false,
   // },
   {
-    id: "jobTitle",
     accessorKey: "jobTitle",
     header: ({ column }) => {
       return (
@@ -77,7 +67,6 @@ export const columns: ColumnDef<JobType>[] = [
     },
   },
   {
-    id: "companyName",
     accessorKey: "companyName",
     header: ({ column }) => {
       return (
@@ -114,7 +103,6 @@ export const columns: ColumnDef<JobType>[] = [
     },
   },
   {
-    id: "location",
     accessorKey: "location",
     header: ({ column }) => {
       return (
@@ -151,7 +139,6 @@ export const columns: ColumnDef<JobType>[] = [
     },
   },
   {
-    id: "jobDescription",
     accessorKey: "jobDescription",
     header: ({ column }) => {
       return (
@@ -188,7 +175,6 @@ export const columns: ColumnDef<JobType>[] = [
     },
   },
   {
-    id: "requirements",
     accessorKey: "requirements",
     header: ({ column }) => {
       return (
@@ -225,38 +211,9 @@ export const columns: ColumnDef<JobType>[] = [
     },
   },
   {
-    id: "actions",
     header: "actions",
     cell: ({ row }) => {
-      const incomeStatement = row.original;
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant='ghost' className='w-8 h-8 p-0'>
-              <RiMore2Fill />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align='end'>
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(JSON.stringify(incomeStatement))
-              }
-            >
-              <Toast
-                buttonText={"Copy Income Statement JSON"}
-                description={"Income Statement JSON copied to clipboard"}
-              />
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              View Income Statement {"(Placeholder)"}
-            </DropdownMenuItem>
-            <DropdownMenuItem>Edit {"(Placeholder)"}</DropdownMenuItem>
-            <DropdownMenuItem>Delete {"(Placeholder)"}</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
+      return <Actions row={row} />;
     },
   },
   // ...
