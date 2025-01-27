@@ -31,7 +31,12 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
       const result = await reader?.read();
       const decoder = new TextDecoder("utf-8");
       const csv = decoder.decode(result?.value);
-      const { data: parsedData } = Papa.parse<JobType>(csv, { header: true });
+      const { data: parsedData } = Papa.parse<JobType>(csv, {
+        header: true,
+        skipEmptyLines: true,
+        transformHeader: (header) => header.trim(),
+        transform: (value) => value.trim(),
+      });
       const dataWithIds = parsedData.map((item, index) => ({
         ...item,
         id: index.toString(),

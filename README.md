@@ -1,4 +1,4 @@
-TODO: add data page, fix sorting empty row bug, fix console errors
+TODO: add data page, fix console errors
 
 Features: Flitering, sorting, reordering columns, column visibility, actions to export job info, pagination, dynamic row length, multi select (no current function with dummy data), context to prevent multiple api calls (data is loaded all at once due to how data is structured in a csv file e.g., lack of id. Data is then indexed to find specific job details. Normally this would be done with an id on the backend table to only load necessary job details rather than all the jobs before keying into one. can't prop drill because bad practice and if a user navigates directly to page)
 
