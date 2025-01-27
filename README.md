@@ -1,6 +1,6 @@
 TODO: add data page, fix console errors
 
-Features: Flitering, sorting, reordering columns, column visibility, actions to export job info, pagination, dynamic row length, multi select (no current function with dummy data), context to prevent multiple api calls (data is loaded all at once due to how data is structured in a csv file e.g., lack of id. Data is then indexed to find specific job details. Normally this would be done with an id on the backend table to only load necessary job details rather than all the jobs before keying into one. can't prop drill because bad practice and if a user navigates directly to page)
+Features: Flitering, sorting, reordering columns, column visibility, actions to save or remove job to local storage, pagination, dynamic row length, context to prevent multiple api calls,
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
