@@ -24,15 +24,7 @@ export default function Home() {
     setData([]);
   };
 
-  if (loading) {
-    // Render a loading indicator or message
-    // Replace with a skeleton later
-    return (
-      <div className='container mx-auto rounded-md'>
-        <DataTableSkeleton />
-      </div>
-    );
-  }
+ 
 
   //  async function deleteRow(id:string) {
   //   console.log("delete this row")
@@ -55,7 +47,12 @@ export default function Home() {
         Job Listings
       </div>
       <div className='container mx-auto rounded-md '>
-        <DataTable columns={columns} data={data} />
+        {loading ? (
+          <DataTableSkeleton />
+        ) : (
+          <DataTable columns={columns} data={data} />
+        )}
+
         <div className='flex justify-center space-x-4 mt-4'>
           <Button onClick={clearData}>Clear Data</Button>
           <Button onClick={refetch}>Refetch Data</Button>
