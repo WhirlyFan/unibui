@@ -70,12 +70,12 @@ export default function Jobs() {
                     <DialogTrigger className='cursor-pointer'>
                       <Button variant='destructive'>Remove</Button>
                     </DialogTrigger>
-                    <DialogContent className='bg-white p-6 rounded-lg shadow-lg fixed inset-0 flex items-center justify-center'>
+                    <DialogContent className='bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg fixed inset-0 flex items-center justify-center'>
                       <DialogHeader>
-                        <DialogTitle className='text-lg font-bold'>
+                        <DialogTitle className='text-lg font-bold dark:text-white'>
                           Remove Job
                         </DialogTitle>
-                        <DialogDescription className='text-sm text-gray-500'>
+                        <DialogDescription className='text-sm text-gray-500 dark:text-gray-400'>
                           Are you sure you want to remove this job?
                         </DialogDescription>
                       </DialogHeader>
