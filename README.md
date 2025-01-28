@@ -1,4 +1,40 @@
-Features: Flitering, sorting, reordering columns, column visibility, actions to save or remove job to local storage, pagination, dynamic row length, context to prevent multiple api calls, motion effects on saved jobs and job details page.
+# UniBui Project
+
+Welcome to the UniBui project! This application reads data from a CSV file containing job listings, allowing users to save jobs, view saved jobs, and access detailed information about individual job listings. It is built using Next.js and TypeScript.
+
+## Table of Contents
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Learn More](#learn-more)
+- [Deploy on Vercel](#deploy-on-vercel)
+
+## Features
+
+- Filtering
+- Sorting
+- Reordering columns
+- Column visibility
+- Actions to save or remove job to local storage
+- Pagination
+- Dynamic row length
+- Context to prevent multiple API calls
+- Motion effects on saved jobs and job details page
+- Dark mode
+- Error handling for invalid routes
+- Responsive web design
+
+## Screenshots
+
+Here are some screenshots of the UniBui project in action:
+
+![Dashboard](public/home.png)
+![Saved Jobs](public/savedJobs.png)
+![Job Details](public/jobDetails.png)
+
+## Live Demo
+
+Check out the live demo of the UniBui project [here](https://unibui.vercel.app).
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -7,13 +43,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
