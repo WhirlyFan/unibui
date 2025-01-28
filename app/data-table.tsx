@@ -155,7 +155,7 @@ export function DataTable<TData extends DataWithId, TValue>({
             <Button
               variant='ghost'
               onClick={() => table.resetColumnFilters()}
-              className='w-40 p-2'
+              className='p-2'
             >
               Clear filters
             </Button>
@@ -171,7 +171,7 @@ export function DataTable<TData extends DataWithId, TValue>({
             table.resetColumnOrder();
           }}
           variant='outline'
-          className='text-red-800 border-red-800 ml-4'
+          className='text-red-800 border-red-800 ml-3'
         >
           Reset table
         </Button>
