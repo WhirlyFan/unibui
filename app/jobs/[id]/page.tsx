@@ -1,32 +1,59 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/context/DataContext";
 import { Magnetic } from "@/components/ui/magnetic";
 import { TextEffect } from "@/components/ui/text-effect";
 import { Skeleton } from "@/components/ui/skeleton";
+import { addJob, deleteJob, jobExists } from "@/lib/utils";
+import { Toast } from "@/components/Toast";
+import { ToastAction } from "@radix-ui/react-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function JobDetails() {
   const { data, loading } = useData();
   const router = useRouter();
   const { id } = useParams();
   const job = data[parseInt(id as string)];
+  const [isJobSaved, setIsJobSaved] = useState(false);
 
+  useEffect(() => {
+    setIsJobSaved(jobExists(job?.id));
+  }, [job?.id]);
 
-  return (
-    <div className='container mx-auto p-4'>
-      <div className='flex justify-between items-center mb-4'>
-        <div className='flex space-x-4'>
+  const handleSaveJob = () => {
+    addJob(job);
+    setIsJobSaved(true);
+  };
+
+  const handleDeleteJob = () => {
+    deleteJob(job.id);
+    setIsJobSaved(false);
+  };
+
+  if (!job && !loading) {
+    return (
+      <div className='container mx-auto p-4'>
+        <div className='flex justify-between items-center mb-4'>
           <Button onClick={() => router.push("/jobs")}>
             Back to Saved Jobs
           </Button>
           <Button onClick={() => router.push("/")}>Back to Jobs</Button>
         </div>
-        <Magnetic>
-          <Button>Apply {"(Placeholder)"}</Button>
-        </Magnetic>
+        <div className='text-center'>
+          <h1 className='text-4xl font-bold'>Job not found</h1>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className='container mx-auto p-4'>
+      <div className='flex justify-between items-center mb-4'>
+        <Button onClick={() => router.push("/jobs")}>Back to Saved Jobs</Button>
+        <Button onClick={() => router.push("/")}>Back to Jobs</Button>
       </div>
 
       <div className='space-y-4'>
@@ -41,7 +68,7 @@ export default function JobDetails() {
             <Skeleton className='h-5 w-full' />
           </div>
         ) : (
-          <div>
+          <div className='space-y-4 border border-gray-800 dark:border-gray-200 p-4 rounded-md shadow-md'>
             <div>
               <h2 className='text-3xl font-bold'>
                 <TextEffect
@@ -114,10 +141,9 @@ export default function JobDetails() {
                   Requirements:
                 </TextEffect>
               </p>
-              <ul className='list-disc list-inside'>
+              <ul className='list-none'>
                 {job.requirements.split(",").map((req, index) => (
                   <li key={index} className='flex items-start'>
-                    <span className='mr-2'>•</span>
                     <TextEffect
                       preset='fade-in-blur'
                       speedReveal={1.1}
@@ -131,7 +157,27 @@ export default function JobDetails() {
             </div>
           </div>
         )}
+        <div className='flex space-x-4'>
+          <Button onClick={handleSaveJob} disabled={loading}>
+            <Toast
+              title={
+                isJobSaved ? "Job already saved" : "Job saved successfully!"
+              }
+              buttonText={"Save"}
+              description={`Job Title: ${job?.jobTitle}`}
+              action={
+                <ToastAction altText='Undo' onClick={handleDeleteJob}>
+                  Undo
+                </ToastAction>
+              }
+            />
+          </Button>
+          <Magnetic>
+            <Button disabled={loading}>Apply {"(Placeholder)"}</Button>
+          </Magnetic>
+        </div>
       </div>
+      <Toaster />
     </div>
   );
 }

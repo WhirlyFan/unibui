@@ -42,9 +42,9 @@ export default function Home() {
   };
 
   return (
-    <div className='container mx-auto w-full'>
+    <div className='container mx-auto max-w-2xl'>
       <div className='text-center text-3xl font-bold pt-4 my-10'>
-        Job Listings
+      Job Listings
       </div>
       <div className='container mx-auto rounded-md '>
         {loading ? (

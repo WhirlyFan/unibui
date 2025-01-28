@@ -51,7 +51,7 @@ export default function Actions({ row }: { row: RowType }) {
         {!isJobSaved ? (
           <DropdownMenuItem onClick={handleAddJob}>
             <Toast
-              title={"Job Saved Successfully!"}
+              title={isJobSaved ? "Job already saved" : "Job Saved Successfully!"}
               buttonText={"Save"}
               description={`Job Title: ${job.jobTitle}`}
               action={

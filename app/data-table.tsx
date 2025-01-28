@@ -171,7 +171,7 @@ export function DataTable<TData extends DataWithId, TValue>({
             table.resetColumnOrder();
           }}
           variant='outline'
-          className='text-red-800 border-red-800'
+          className='text-red-800 border-red-800 ml-4'
         >
           Reset table
         </Button>
