@@ -138,82 +138,87 @@ export const columns: ColumnDef<JobType>[] = [
       );
     },
   },
+  // {
+  //   accessorKey: "jobDescription",
+  //   header: ({ column }) => {
+  //     return (
+  //       <div className='flex justify-between py-2 text-left'>
+  //         Job Description
+  //         <HiArrowsUpDown
+  //           className='w-4 h-4 ml-2 cursor-pointer'
+  //           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  //         />
+  //       </div>
+  //     );
+  //   },
+  //   footer: ({ column, table }) => {
+  //     return (
+  //       <div className='flex flex-row gap-4'>
+  //         <HiOutlineArrowLeftCircle
+  //           className='w-4 h-4 ml-2 cursor-pointer'
+  //           onClick={() =>
+  //             table.setColumnOrder(
+  //               moveColumnsUp(table.getAllLeafColumns(), column.id)
+  //             )
+  //           }
+  //         ></HiOutlineArrowLeftCircle>
+  //         <HiOutlineArrowRightCircle
+  //           className='w-4 h-4 mr-2 cursor-pointer'
+  //           onClick={() =>
+  //             table.setColumnOrder(
+  //               moveColumnsDown(table.getAllLeafColumns(), column.id)
+  //             )
+  //           }
+  //         ></HiOutlineArrowRightCircle>
+  //       </div>
+  //     );
+  //   },
+  // },
+  // {
+  //   accessorKey: "requirements",
+  //   header: ({ column }) => {
+  //     return (
+  //       <div className='flex justify-between py-2 text-left'>
+  //         Requirements
+  //         <HiArrowsUpDown
+  //           className='w-4 h-4 ml-2 cursor-pointer'
+  //           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  //         />
+  //       </div>
+  //     );
+  //   },
+  //   footer: ({ column, table }) => {
+  //     return (
+  //       <div className='flex flex-row gap-4'>
+  //         <HiOutlineArrowLeftCircle
+  //           className='w-4 h-4 ml-2 cursor-pointer'
+  //           onClick={() =>
+  //             table.setColumnOrder(
+  //               moveColumnsUp(table.getAllLeafColumns(), column.id)
+  //             )
+  //           }
+  //         ></HiOutlineArrowLeftCircle>
+  //         <HiOutlineArrowRightCircle
+  //           className='w-4 h-4 mr-2 cursor-pointer'
+  //           onClick={() =>
+  //             table.setColumnOrder(
+  //               moveColumnsDown(table.getAllLeafColumns(), column.id)
+  //             )
+  //           }
+  //         ></HiOutlineArrowRightCircle>
+  //       </div>
+  //     );
+  //   },
+  // },
   {
-    accessorKey: "jobDescription",
-    header: ({ column }) => {
-      return (
-        <div className='flex justify-between py-2 text-left'>
-          Job Description
-          <HiArrowsUpDown
-            className='w-4 h-4 ml-2 cursor-pointer'
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          />
-        </div>
-      );
-    },
-    footer: ({ column, table }) => {
-      return (
-        <div className='flex flex-row gap-4'>
-          <HiOutlineArrowLeftCircle
-            className='w-4 h-4 ml-2 cursor-pointer'
-            onClick={() =>
-              table.setColumnOrder(
-                moveColumnsUp(table.getAllLeafColumns(), column.id)
-              )
-            }
-          ></HiOutlineArrowLeftCircle>
-          <HiOutlineArrowRightCircle
-            className='w-4 h-4 mr-2 cursor-pointer'
-            onClick={() =>
-              table.setColumnOrder(
-                moveColumnsDown(table.getAllLeafColumns(), column.id)
-              )
-            }
-          ></HiOutlineArrowRightCircle>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "requirements",
-    header: ({ column }) => {
-      return (
-        <div className='flex justify-between py-2 text-left'>
-          Requirements
-          <HiArrowsUpDown
-            className='w-4 h-4 ml-2 cursor-pointer'
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          />
-        </div>
-      );
-    },
-    footer: ({ column, table }) => {
-      return (
-        <div className='flex flex-row gap-4'>
-          <HiOutlineArrowLeftCircle
-            className='w-4 h-4 ml-2 cursor-pointer'
-            onClick={() =>
-              table.setColumnOrder(
-                moveColumnsUp(table.getAllLeafColumns(), column.id)
-              )
-            }
-          ></HiOutlineArrowLeftCircle>
-          <HiOutlineArrowRightCircle
-            className='w-4 h-4 mr-2 cursor-pointer'
-            onClick={() =>
-              table.setColumnOrder(
-                moveColumnsDown(table.getAllLeafColumns(), column.id)
-              )
-            }
-          ></HiOutlineArrowRightCircle>
-        </div>
-      );
-    },
-  },
-  {
-    header: "actions",
+    id: "actions",
+    header: () => <div className='text-right'>Actions</div>,
     cell: ({ row }) => {
-      return <Actions row={row} />;
+      return (
+        <div className='flex justify-end'>
+          <Actions row={row} />
+        </div>
+      );
     },
   },
   // ...

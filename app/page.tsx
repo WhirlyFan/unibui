@@ -50,13 +50,13 @@ export default function Home() {
   };
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto w-2/5'>
       <div className='text-center text-3xl font-bold pt-4 my-10'>
         Job Listings
       </div>
       <div className='container mx-auto rounded-md '>
         <DataTable columns={columns} data={data} />
-        <div className='flex justify-center space-x-4'>
+        <div className='flex justify-center space-x-4 mt-4'>
           <Button onClick={clearData}>Clear Data</Button>
           <Button onClick={refetch}>Refetch Data</Button>
           <Button onClick={handleJobsRoute}>Saved Jobs</Button>

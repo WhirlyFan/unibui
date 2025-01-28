@@ -1,6 +1,4 @@
-TODO: add data page, fix console errors
-
-Features: Flitering, sorting, reordering columns, column visibility, actions to save or remove job to local storage, pagination, dynamic row length, context to prevent multiple api calls,
+Features: Flitering, sorting, reordering columns, column visibility, actions to save or remove job to local storage, pagination, dynamic row length, context to prevent multiple api calls, Add motion effects on saved jobs page
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Tilt } from "@/components/ui/tilt";
 
 export default function Jobs() {
   const [jobs, setJobs] = useState<JobType[]>([]);
@@ -37,28 +38,22 @@ export default function Jobs() {
           Back to Jobs
         </Button>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {jobs.map((job) => (
-          <Card
-            key={job.id}
-            className='shadow-md cursor-pointer'
-            onClick={() => handleDetailsRoute(job.id)}
-          >
-            <CardHeader>
-              <CardTitle>{job.jobTitle}</CardTitle>
-              <CardDescription>{job.companyName}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>{job.location}</p>
-              <p>{job.jobDescription}</p>
-              <p className='font-semibold mt-2'>Requirements:</p>
-              <ul className='list-disc list-inside'>
-                {job.requirements.split(",").map((req, index) => (
-                  <li key={index}>{req.trim()}</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <Tilt rotationFactor={12} isRevese key={job.id}>
+            <Card
+              className='shadow-md cursor-pointer w-full'
+              onClick={() => handleDetailsRoute(job.id)}
+            >
+              <CardHeader>
+                <CardTitle>{job.jobTitle}</CardTitle>
+                <CardDescription>{job.companyName}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>{job.location}</p>
+              </CardContent>
+            </Card>
+          </Tilt>
         ))}
       </div>
     </div>

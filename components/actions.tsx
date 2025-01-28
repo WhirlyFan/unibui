@@ -1,4 +1,4 @@
-import { RiMore2Fill } from "react-icons/ri";
+import { RiMoreLine } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -42,7 +42,7 @@ export default function Actions({ row }: { row: RowType }) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant='ghost' className='w-8 h-8 p-0'>
-          <RiMore2Fill />
+          <RiMoreLine />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' onClick={(e) => e.stopPropagation()}>

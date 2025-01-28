@@ -85,7 +85,7 @@ export function DataTable<TData extends DataWithId, TValue>({
 
     //Control pagination. Default is 10
     initialState: {
-      pagination: { pageSize: 5 },
+      pagination: { pageSize: 10 },
     },
 
     //This can be added to insert custom functions, accessible :table.options.meta.methodName
