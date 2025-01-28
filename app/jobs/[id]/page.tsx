@@ -172,9 +172,26 @@ export default function JobDetails() {
               }
             />
           </Button>
-          <Magnetic>
-            <Button disabled={loading}>Apply {"(Placeholder)"}</Button>
-          </Magnetic>
+          <Magnetic
+              intensity={0.2}
+              springOptions={{ bounce: 0.1 }}
+              actionArea='global'
+              range={200}
+            >
+              <Button
+                type='button'
+                className='inline-flex items-center rounded-lg border border-zinc-300 bg-zinc-300 px-4 py-2 text-sm text-zinc-950 transition-all duration-200 hover:bg-zinc-400 dark:border-zinc-900 dark:bg-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-600'
+              >
+                <Magnetic
+                  intensity={0.1}
+                  springOptions={{ bounce: 0.1 }}
+                  actionArea='global'
+                  range={200}
+                >
+                  <span>Apply (Placeholder)</span>
+                </Magnetic>
+              </Button>
+            </Magnetic>
         </div>
       </div>
       <Toaster />
