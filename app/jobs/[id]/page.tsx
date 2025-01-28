@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/context/DataContext";
+import { Magnetic } from "@/components/ui/magnetic";
 
 export default function JobDetails() {
   const { data, loading } = useData();
@@ -24,7 +25,9 @@ export default function JobDetails() {
           </Button>
           <Button onClick={() => router.push("/")}>Back to Jobs</Button>
         </div>
-        <Button>Apply {"(Placeholder)"}</Button>
+        <Magnetic>
+          <Button>Apply {"(Placeholder)"}</Button>
+        </Magnetic>
       </div>
       <div className='space-y-4'>
         <div className='text-center'>
