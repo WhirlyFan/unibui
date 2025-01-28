@@ -21,6 +21,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Jobs() {
   const [jobs, setJobs] = useState<JobType[]>([]);
@@ -48,54 +49,67 @@ export default function Jobs() {
     <div className='container mx-auto p-4'>
       <div className='flex justify-between items-center my-10'>
         <div className='text-3xl font-bold'>Saved Jobs</div>
-        <Button className='cursor-pointer' onClick={handleHomeRoute}>
-          Back to Jobs
-        </Button>
+        <div
+        className="flex space-x-4"
+        >
+          <ModeToggle />
+          <Button className='cursor-pointer' onClick={handleHomeRoute}>
+            Back to Jobs
+          </Button>
+        </div>
       </div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-        {jobs.map((job) => (
-          <Tilt rotationFactor={8} isRevese key={job.id}>
-            <Card className='shadow-md w-full'>
-              <CardHeader>
-                <CardTitle>{job.jobTitle}</CardTitle>
-                <CardDescription>{job.companyName}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className='flex justify-between items-center'>
-                  <p>{job.location}</p>
-                  <Button onClick={() => handleDetailsRoute(job.id)}>
-                    Go to Job
-                  </Button>
-                  <Dialog>
-                    <DialogTrigger className='cursor-pointer'>
-                      <Button variant='destructive'>Remove</Button>
-                    </DialogTrigger>
-                    <DialogContent className='bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg fixed inset-0 flex items-center justify-center'>
-                      <DialogHeader>
-                        <DialogTitle className='text-lg font-bold dark:text-white'>
-                          Remove Job
-                        </DialogTitle>
-                        <DialogDescription className='text-sm text-gray-500 dark:text-gray-400'>
-                          Are you sure you want to remove this job?
-                        </DialogDescription>
-                      </DialogHeader>
-                      <div className='flex justify-end space-x-2 mt-4'>
-                        <Button
-                          variant='destructive'
-                          onClick={() => handleRemoveJob(job.id)}
-                        >
-                          Confirm
-                        </Button>
-                        <DialogClose />
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              </CardContent>
-            </Card>
-          </Tilt>
-        ))}
-      </div>
+      {jobs.length === 0 ? (
+        <div className='container mx-auto p-4'>
+          <div className='text-center'>
+            <h1 className='text-4xl font-bold'>No saved jobs</h1>
+          </div>
+        </div>
+      ) : (
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+          {jobs.map((job) => (
+            <Tilt rotationFactor={8} isRevese key={job.id}>
+              <Card className='shadow-md w-full'>
+                <CardHeader>
+                  <CardTitle>{job.jobTitle}</CardTitle>
+                  <CardDescription>{job.companyName}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className='flex justify-between items-center'>
+                    <p>{job.location}</p>
+                    <Button onClick={() => handleDetailsRoute(job.id)}>
+                      Go to Job
+                    </Button>
+                    <Dialog>
+                      <DialogTrigger className='cursor-pointer'>
+                        <Button variant='destructive'>Remove</Button>
+                      </DialogTrigger>
+                      <DialogContent className='bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg fixed inset-0 flex items-center justify-center'>
+                        <DialogHeader>
+                          <DialogTitle className='text-lg font-bold dark:text-white'>
+                            Remove Job
+                          </DialogTitle>
+                          <DialogDescription className='text-sm text-gray-500 dark:text-gray-400'>
+                            Are you sure you want to remove this job?
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className='flex justify-end space-x-2 mt-4'>
+                          <Button
+                            variant='destructive'
+                            onClick={() => handleRemoveJob(job.id)}
+                          >
+                            Confirm
+                          </Button>
+                          <DialogClose />
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+                </CardContent>
+              </Card>
+            </Tilt>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
