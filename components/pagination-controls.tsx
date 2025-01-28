@@ -30,6 +30,7 @@ export function DataTablePagination<TData>({
           <div className='flex-col'>
             {/* Stop rows per page count if there is no more data */}
             <FiChevronUp
+              className='cursor-pointer'
               onClick={
                 !table.getCanNextPage()
                   ? undefined
@@ -42,6 +43,7 @@ export function DataTablePagination<TData>({
               }
             ></FiChevronUp>
             <FiChevronDown
+              className='cursor-pointer'
               onClick={() => {
                 table.setPageSize(table.getState().pagination.pageSize - 5);
               }}
