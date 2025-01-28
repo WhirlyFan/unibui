@@ -24,7 +24,7 @@ export default function Home() {
     setData([]);
   };
 
- 
+
 
   //  async function deleteRow(id:string) {
   //   console.log("delete this row")
@@ -42,7 +42,7 @@ export default function Home() {
   };
 
   return (
-    <div className='container mx-auto w-2/5'>
+    <div className='container mx-auto w-full'>
       <div className='text-center text-3xl font-bold pt-4 my-10'>
         Job Listings
       </div>
